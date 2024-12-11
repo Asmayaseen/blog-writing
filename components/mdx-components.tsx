@@ -1,9 +1,7 @@
 import Image from "next/image";
 import * as runtime from "react/jsx-runtime";
 import { Callout } from "./callout";
-
-// Removed unused import
-// import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 
 const useMDXComponent = (code: string) => {
   const fn = new Function(code);

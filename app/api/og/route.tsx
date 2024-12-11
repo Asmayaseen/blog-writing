@@ -2,14 +2,14 @@ import { NextRequest } from "next/server";
 import { ImageResponse } from "next/og";
 import { siteConfig } from "@/config/site";
 
-// Load the Inter-Bold font
+export const runtime = "edge";
+
 const interBold = fetch(
   new URL("../../../assets/fonts/Inter-Bold.ttf", import.meta.url)
 ).then((res) => res.arrayBuffer());
 
 export async function GET(req: NextRequest) {
   try {
-    // Wait for the font to be loaded
     const fontBold = await interBold;
 
     const { searchParams } = req.nextUrl;
@@ -69,7 +69,6 @@ export async function GET(req: NextRequest) {
       }
     );
   } catch (error) {
-    console.error("Error generating image:", error); // Log the error
     return new Response("Failed to generate image", { status: 500 });
   }
 }

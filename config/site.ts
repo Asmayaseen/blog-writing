@@ -1,6 +1,6 @@
 export const siteConfig = {
   name: "AsmaBlog",
-  url: "https://example.com/Asmayaseen",
+  url: "https://example.com",
   description: "Nextjs 14 blog using velite, tailwind and shadcn",
   author: "Asma Khan",
   links: {

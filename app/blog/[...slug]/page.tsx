@@ -6,7 +6,6 @@ import "@/styles/mdx.css";
 import { Metadata } from "next";
 import { siteConfig } from "@/config/site";
 import { Tag } from "@/components/tag";
-
 interface PostPageProps {
   params: {
     slug: string[];
@@ -17,14 +16,12 @@ async function getPostFromParams(params: PostPageProps["params"]) {
   const slug = params?.slug?.join("/");
   const post = posts.find((post) => post.slugAsParams === slug);
 
-  return post || null; // Ensure null is returned explicitly if no post is found
+  return post;
 }
 
 export async function generateMetadata({
   params,
-}: {
-  params: PostPageProps["params"];
-}): Promise<Metadata> {
+}: PostPageProps): Promise<Metadata> {
   const post = await getPostFromParams(params);
 
   if (!post) {
@@ -61,7 +58,9 @@ export async function generateMetadata({
   };
 }
 
-export async function generateStaticParams(): Promise<PostPageProps["params"][]> {
+export async function generateStaticParams(): Promise<
+  PostPageProps["params"][]
+> {
   return posts.map((post) => ({ slug: post.slugAsParams.split("/") }));
 }
 
@@ -73,16 +72,16 @@ export default async function PostPage({ params }: PostPageProps) {
   }
 
   return (
-    <article className="container max-w-3xl py-6 mx-auto prose dark:prose-invert">
-      <h1 className="text-4xl font-bold mb-2">{post.title}</h1>
+    <article className="container py-6 prose dark:prose-invert max-w-3xl mx-auto">
+      <h1 className="mb-2">{post.title}</h1>
       <div className="flex gap-2 mb-2">
         {post.tags?.map((tag) => (
           <Tag tag={tag} key={tag} />
         ))}
       </div>
-      {post.description && (
+      {post.description ? (
         <p className="text-xl mt-0 text-muted-foreground">{post.description}</p>
-      )}
+      ) : null}
       <hr className="my-4" />
       <MDXContent code={post.body} />
     </article>

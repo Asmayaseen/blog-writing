@@ -16,7 +16,7 @@ export function MobileNav() {
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
         <Button variant="outline" className="w-10 px-0 sm:hidden">
-          <Menu className="size-5" /> {/* Replaced 'h-5 w-5' with 'size-5' */}
+          <Menu className="h-5 w-5" />
           <span className="sr-only">Toggle Theme</span>
         </Button>
       </SheetTrigger>
@@ -26,10 +26,10 @@ export function MobileNav() {
           href="/"
           className="flex items-center"
         >
-          <Icons.logo className="size-4 mr-2" /> {/* Replaced 'h-4 w-4' with 'size-4' */}
+          <Icons.logo className="mr-2 h-4 w-4" />
           <span className="font-bold">{siteConfig.name}</span>
         </MobileLink>
-        <div className="flex flex-col gap-3 mt-3"> {/* Corrected Tailwind class order */}
+        <div className="flex flex-col gap-3 mt-3">
           <MobileLink onOpenChange={setOpen} href="/blog">
             Blog
           </MobileLink>
