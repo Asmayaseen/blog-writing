@@ -24,33 +24,25 @@ export async function GET(req: NextRequest) {
 
     return new ImageResponse(
       (
-        <div tw="flex relative flex-col p-12 w-full h-full items-start text-black bg-white">
-          <div tw="flex items-center">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
+        <div style={{ display: "flex", flexDirection: "column", padding: "12px", width: "100%", height: "100%", alignItems: "flex-start", color: "black", backgroundColor: "white" }}>
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M4 11a9 9 0 0 1 9 9" />
               <path d="M4 4a16 16 0 0 1 16 16" />
               <circle cx="5" cy="19" r="1" />
             </svg>
-            <p tw="ml-2 font-bold text-2xl">AsmaBlog</p>
+            <p style={{ marginLeft: "8px", fontWeight: "bold", fontSize: "24px" }}>JollyBlog</p>
           </div>
-          <div tw="flex flex-col flex-1 py-10">
-            <div tw="flex text-xl uppercase font-bold tracking-tight font-normal">
+          <div style={{ display: "flex", flexDirection: "column", flex: 1, paddingTop: "10px", paddingBottom: "10px" }}>
+            <div style={{ display: "flex", fontSize: "20px", textTransform: "uppercase", fontWeight: "bold", letterSpacing: "tight" }}>
               BLOG POST
             </div>
-            <div tw="flex text-[80px] font-bold text-[50px]">{heading}</div>
+            <div style={{ display: "flex", fontSize: "80px", fontWeight: "bold" }}>{heading}</div>
           </div>
-          <div tw="flex items-center w-full justify-between">
-            <div tw="flex text-xl">{siteConfig.url}</div>
-            <div tw="flex items-center text-xl">
-              <div tw="flex ml-2">{siteConfig.links.github}</div>
+          <div style={{ display: "flex", alignItems: "center", width: "100%", justifyContent: "space-between" }}>
+            <div style={{ display: "flex", fontSize: "20px" }}>{siteConfig.url}</div>
+            <div style={{ display: "flex", alignItems: "center", fontSize: "20px" }}>
+              <div style={{ marginLeft: "8px" }}>{siteConfig.links.github}</div>
             </div>
           </div>
         </div>
